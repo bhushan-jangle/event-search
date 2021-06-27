@@ -1,0 +1,174 @@
+/* Header */
+
+.HeaderNavbar{
+    /* position: sticky;
+    top: 0; */
+    z-index: 500;
+    height: 60px;
+    width: 100%;
+    position: relative;
+    top: 0;
+    bottom: 0; 
+}
+
+.TopHeder{
+    /* position: sticky;
+    top: 0; */
+    z-index: 500;
+    height: 40px;
+    width: 100%;
+    position: relative;
+    top: 0;
+    bottom: 0; 
+}
+
+/* .postion{
+    margin-top: 70px;
+    margin-left: 15px;
+    margin-right: 15px;
+} */
+
+/*  Carousel*/
+.CarouselMain img{
+    margin-top: 120px;
+    margin-bottom: 15px;
+    max-height: 350px;
+}
+
+/* Body */
+.btn-create-post{
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    z-index: 999;
+}
+
+.body-style{
+    padding: 15px;
+    /* margin-top: 80px; */
+
+    overflow: auto;
+}
+
+.small-left-body{
+    padding: 15px;
+    /* margin-top: 80px; */
+
+    overflow: auto;
+    margin: 0;
+    max-width: 80%;
+}
+
+.notification-body{
+    margin: 0 auto;
+    max-width: 800px;
+    margin-top: 120px;
+}
+
+.news-details{
+    padding: 15px;
+   
+   margin: 15px;
+    
+    margin: 0 auto;
+    margin-top: 60px;
+   max-width: 800px;
+}
+
+.card-style{
+    margin-bottom: 25px;
+}
+
+.news-card{
+    margin-bottom: 25px;
+}
+
+.btn-contact{
+    background: whitesmoke;
+    color: #1c1d1c;
+    padding: 6px;
+    border-radius: 4px;
+    display: inline-flex;
+    text-decoration: none;
+    font-size: small;
+}
+
+.space{
+    padding-left: 25px;
+}
+
+.btn-contact:hover{
+    background: rgba(251, 253, 253, 0.6);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-right{
+    float:right;
+}
+
+.btn-left{
+  border-radius: 50%;
+    float:left;
+}
+
+.btn-center{
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.top-space{
+    margin-top:15px;
+}
+
+/* Crate new Post */
+.btn-circle.btn-xl {
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    font-size: 24px;
+    line-height: 1.33;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}
+
+.icon-left{
+  align-content:center;
+}
+
+
+/* Footer */
+.footer-post-time{
+    margin-left: 6px;
+}
+
+.btn-like{
+    margin: 'auto';
+    display: 'block';
+    width: 'fit-content'
+}
+
+/* Footer */
+.footer{
+    clear: both;
+    position: relative;
+    height: 100px;
+    padding: 15px;
+    background-color: black;
+    
+}
+
+.footer p {
+    text-align: right;
+    color: whitesmoke;
+}
