@@ -1,13 +1,30 @@
-import React from "react"
+import React,{useState, useEffect} from "react"
+import { connect } from "react-redux"
+import { fetchUser } from "../redux"
 import EventCard from "./EventCard"
+import axios from "axios"
 
 function Event(props){
 
+    
     return(
         <>
-            <EventCard category={props.category}/>
+        {console.log(props.eventData)}
+            <EventCard eventData={props.eventData} category={props.category}/>
         </>
     )
 }
 
-export default Event
+const mapStateToProps = (state) =>{
+    return{
+        users: state.users
+    }
+}
+
+const mapDispatchToProps = (dispatch) =>{
+    return{
+        fetchUser : (user)=> dispatch(fetchUser(user))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (Event)

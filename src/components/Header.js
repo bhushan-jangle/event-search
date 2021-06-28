@@ -14,8 +14,7 @@ function Header(props){
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto" >             
                     <Nav.Link as={NavLink} to="/" onClick={props.setNewsDetailsShowAlways} >Home</Nav.Link>       
-                    <Nav.Link as={NavLink} to="/favourite-events" onClick={props.setNewsDetailsShowAlways} >Favourite Events</Nav.Link>
-                    <Nav.Link as={NavLink} to="/users" push>Users</Nav.Link>
+                    <Nav.Link as={NavLink} to="/favourite-events" onClick={props.setNewsDetailsShowAlways}>Favourite Events</Nav.Link>
                    </Nav>
                 </Navbar.Collapse>
             </Navbar>

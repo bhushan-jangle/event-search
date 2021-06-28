@@ -1,15 +1,14 @@
 import { combineReducers } from "redux";
-import NewsDataReducer from "./News/NewsDataReducer";
 import NewsDetailsReducer from "./NewsDetails/NewsDetailsReducer";
 import userReducer from "./user/userReducer";
 import NotificationReducer from "./Notification/NotificationReducer";
-
+import FavouriteReducer from "./Favourite/FavouriteReducer"
 
 const rootReducer = combineReducers({
     newsDetails: NewsDetailsReducer,
-    news: NewsDataReducer,
     users: userReducer,
-    notification: NotificationReducer
+    notification: NotificationReducer,
+    favourite:FavouriteReducer
 })
 
 export default rootReducer

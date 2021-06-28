@@ -10,18 +10,22 @@ function About(props){
     },[])
 
     const getUserDetails = () =>{
-        props.fetchUser();
+        // props.fetchUser();
     }
 
     return(
         <div>
             <p>Users</p>
-            {/* <button onClick={props.fetchUser}>Get Users</button> */}
-            {/* {props.fetchUser()} */} 
-            {console.log(props.users)}
-            {props.users._embedded.events.map((item)=>
+            {props.eventData._embedded.events.map((item)=>
                 <p>{item.name}</p>
             )}
+
+            {/* <button onClick={props.fetchUser}>Get Users</button> */}
+            {/* {props.fetchUser()} */} 
+            {/* {console.log(props.users)}
+            {props.users._embedded.events.map((item)=>
+                <p>{item.name}</p>
+            )} */}
             {/* {props.users.map((user)=>
                 {user.map((us)=>
                     <h1>{us.name}</h1>

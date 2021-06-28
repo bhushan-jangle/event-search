@@ -19,10 +19,11 @@ export const getUser = (users) =>{
 
 export const fetchUser = () =>{
     return function(dispatch){
-        axios.get(`https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&apikey=BJaOHw9WmOkb5FHM6X7LH6yJoxzkcXiA`)
+        axios.get(`https://jsonplaceholder.typicode.com/users`)
             .then((result)=>{
-                dispatch(getUser(result.data))
+                dispatch(getUser(result.data._embedded.events))
             })  
+        
     }
 }
 

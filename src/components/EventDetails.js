@@ -5,39 +5,73 @@ import "./comp.css"
 import { setNewsDetailsShow } from "../redux/NewsDetails/NewsDetailsAction"
 import { connect } from "react-redux"
 import CardFooter from "./CardFooter"
+import Checkbox from '@material-ui/core/Checkbox';
+import Favorite from '@material-ui/icons/Favorite';
+import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+import IconButton from '@material-ui/core/IconButton';
+import LocationOnRoundedIcon from '@material-ui/icons/LocationOnRounded';
+import EventNoteRoundedIcon from '@material-ui/icons/EventNoteRounded';
+import AccessTimeRoundedIcon from '@material-ui/icons/AccessTimeRounded';
+import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
 
 function EventDetails(props){
+
+    const handleClick = (url) =>{
+        window.open(url,'_blank');
+    }
 
     return(
         <div className ="news-details">
             {console.log("NewsDetails reached")}
+            {console.log(props)}
             <Row xs={1} md={1} className="g-4">
                     {/* {props.news.map((item) => ( */}
                     <Col key={props.newsData.id}>
-                        <div className="news-card">
+                        <div >
                             <Card>
-                            <Card.Text className="btn-center">
-                                        <button type="button" className="btn btn-warning btn-circle btn-xl"><i className="fa fa-times"></i>
-                                    </button>
-                                        <Button variant="outline-primary" className="btn-right" size="sm">Follow</Button>{' '}  
-                                        
-                                </Card.Text> 
-                           
                             <Card.Body>
-                                <Card.Title>{props.newsData.title}</Card.Title>
-                                <Card.Img variant="top" src="/img.png"/>
-                                <Card.Text className="top-space">
-                                {props.newsData.desc}
-                                </Card.Text>
-                                <Card.Text>
-                                    {/* <Card.Link as={NavLink} to={'/news'} onClick={()=>props.onShow(!props.isShowBool)}>Go Back...</Card.Link> */}
-                                    {props.category == "home" ? 
-                                        <Card.Link as={NavLink} to={'/'} onClick={props.setNewsDetailsShow} >Go Back...</Card.Link>    
-                                        : <Card.Link as={NavLink} to={'/'+props.category+''} onClick={props.setNewsDetailsShow} >Go Back...</Card.Link>                                                          
-                                    }
-                                </Card.Text>
-                            </Card.Body>
-                            <CardFooter/>
+                                    {/* src="/img.png"/ */}
+                                    <Card.Img className="cardDetailImg"  variant="top"  src={props.newsData.desc.images[0].url}/>
+                                    <Card.Text className="top-space cardTitle">
+                                    </Card.Text>
+                                        <IconButton>
+                                            <AccessTimeRoundedIcon  color="primary" fontSize="small"/>
+                                        </IconButton>
+                                            <span>{props.newsData.desc.dates.start.localTime}</span>
+                                        
+                                        <IconButton>
+                                                <EventNoteRoundedIcon  color="primary" fontSize="small"/>
+                                        </IconButton>
+                                            <span>{props.newsData.desc.dates.start.localDate}</span>
+                                        {props.category == "home" ? 
+                                            <Card.Link className="icon-goback" as={NavLink} to={'/'} onClick={props.setNewsDetailsShow} >
+                                                <IconButton>
+                                                    <ArrowBackTwoToneIcon  color="primary" fontSize="small"/>
+                                                </IconButton>
+                                            </Card.Link>    
+                                            : <Card.Link className="icon-goback"  as={NavLink} to={'/'+props.category+''} onClick={props.setNewsDetailsShow} >
+                                                <IconButton>
+                                                    <ArrowBackTwoToneIcon  color="primary" fontSize="small"/>
+                                                </IconButton>
+                                            </Card.Link>                                                          
+                                        }
+                                    <Card.Text>
+                                            <Card.Title className="cardTitle">{props.newsData.title}</Card.Title>
+                                            <IconButton>
+                                                <LocationOnRoundedIcon  color="primary" fontSize="small"/>
+                                            </IconButton>
+                                                <span>{props.newsData.desc._embedded.venues[0].name}</span>
+                                        {/* <Card.Link as={NavLink} to={'/news'} onClick={()=>props.onShow(!props.isShowBool)}>Go Back...</Card.Link> */}
+                                       <div className="saleCard">
+                                           <h5>Sale Details </h5>
+                                           <p>Sale Starts : {props.newsData.desc.sales.public.startDateTime}</p>
+                                           <p>Sale Ends : {props.newsData.desc.sales.public.endDateTime}</p>
+                                       </div>
+                                    </Card.Text> 
+                                    <Button onClick={()=>handleClick(props.newsData.desc.url)} variant="primary" size="lg" block>
+                                        Book
+                                    </Button>
+                                </Card.Body>
                             </Card>
                         </div>
                     </Col>
