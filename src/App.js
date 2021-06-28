@@ -14,7 +14,8 @@ import axios from "axios"
 
 function App() {
   const[Events, setEvents] = useState([]);
-  const APIKEY = 'BJaOHw9WmOkb5FHM6X7LH6yJoxzkcXiA';
+  const APIKEY = process.env.REACT_APP_DISCOVERY_API_KEY;
+  console.log(APIKEY)
 
   // useEffect(()=>{
   //     fetch(`https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&apikey=${APIKEY}`)
