@@ -43,17 +43,24 @@ h1 , h2{
     bottom: 0; 
 }
 
+.OverTop{
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background-color: blue;
+        border-radius: 50%;
+        animation: blinker 1s cubic-bezier(0.5, 0, 1, 1) infinite alternate;
+}
+
 /* .postion{
     margin-top: 70px;
     margin-left: 15px;
     margin-right: 15px;
 } */
 
-/*  Carousel*/
-.CarouselMain img{
-    margin-top: 120px;
-    margin-bottom: 15px;
-    max-height: 350px;
+/* Search */
+.searchClose{
+    float: right;
 }
 
 /* Body */

@@ -1,14 +1,13 @@
-import { combineReducers } from "redux";
-import NewsDetailsReducer from "./NewsDetails/NewsDetailsReducer";
-import userReducer from "./user/userReducer";
-import NotificationReducer from "./Notification/NotificationReducer";
-import FavouriteReducer from "./Favourite/FavouriteReducer"
+/* eslint-disable linebreak-style */
+/* eslint-disable no-case-declarations */
+/* eslint-disable linebreak-style */
+import { combineReducers } from 'redux';
+import FavouriteReducer from './Favourite/FavouriteReducer';
+import NewsDetailsReducer from './NewsDetails/NewsDetailsReducer';
 
 const rootReducer = combineReducers({
-    newsDetails: NewsDetailsReducer,
-    users: userReducer,
-    notification: NotificationReducer,
-    favourite:FavouriteReducer
-})
+  newsDetails: NewsDetailsReducer,
+  favourite: FavouriteReducer,
+});
 
-export default rootReducer
+export default rootReducer;

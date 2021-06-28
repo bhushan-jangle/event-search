@@ -1,10 +1,24 @@
-import React from 'react';
+/* eslint-disable linebreak-style */
+/* eslint-disable indent */
+/* eslint-disable comma-dangle */
+/* eslint-disable linebreak-style */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/* eslint-disable linebreak-style */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-console */
+/* eslint-disable max-len */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable linebreak-style */
 import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 import SearchIcon from '@material-ui/icons/Search';
+import React, { useEffect, useState } from 'react';
+import SearchPage from './SearchPage';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -61,31 +75,66 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TopHeader() {
+export default function TopHeader(props) {
   const classes = useStyles();
+  const [input, setInput] = useState('');
+  const [resultOpen, setResultOpen] = useState(false);
+  const [eventListDefault, setEventListDefault] = useState();
+  const [eventList, setEventList] = useState();
+
+  const updateInput = async (currentInput) => {
+    setResultOpen(true);
+    setEventListDefault(props.eventData);
+    setEventList(props.eventData);
+    const filtered = eventListDefault.filter((country) => country.name.toLowerCase().includes(currentInput.toLowerCase()));
+    setInput(currentInput);
+    setEventList(filtered);
+  };
+
+  useEffect(() => {
+    setEventListDefault(props.eventData);
+    setEventList(props.eventData);
+  }, []);
+
+  console.log(eventList);
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography className={classes.title} variant="h6" noWrap>
-            Event Search
-          </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
+    <>
+      {console.log('render')}
+      <div className={classes.root}>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography className={classes.title} variant="h6" noWrap>
+              Event Search
+            </Typography>
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                placeholder="Search by name"
+                classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
-        </Toolbar>
-      </AppBar>
-    </div>
+                inputProps={{ 'aria-label': 'search' }}
+                input={input}
+                onChange={(e) => updateInput(e.target.value)}
+              />
+            </div>
+          </Toolbar>
+          {resultOpen
+              ? (
+                <SearchPage
+                  eventList={eventList}
+                  bool={resultOpen}
+                  onBoolChange={setResultOpen}
+                  onClearInput={setInput}
+                />
+)
+              : null}
+        </AppBar>
+      </div>
+    </>
   );
 }

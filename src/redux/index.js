@@ -1,4 +1,6 @@
-export * from "./NewsDetails/NewsDetailsAction"
-export * from "./user/userAction"
-export * from "./Notification/NotificationAction"
-export * from "./Favourite/FavouriteAction"
+/* eslint-disable linebreak-style */
+/* eslint-disable no-multiple-empty-lines */
+/* eslint-disable linebreak-style */
+export * from './Favourite/FavouriteAction';
+export * from './NewsDetails/NewsDetailsAction';
+
