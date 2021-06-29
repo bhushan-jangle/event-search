@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, BrowserRouter as Router } from 'react-router-dom';
 import Body from './components/Body';
-import './components/comp.css';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import TopHeader from './components/TopHeader';

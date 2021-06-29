@@ -3,7 +3,7 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable linebreak-style */
 import React from 'react';
-import './comp.css';
+import '../styles/Style.css';
 
 function Footer() {
   return (

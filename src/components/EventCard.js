@@ -18,22 +18,23 @@ import React, { useEffect, useState } from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { NavLink, Route, Switch } from 'react-router-dom';
-import { addFavoriteThings, removeFavoriteThings, setNewsDetailsShow } from '../redux';
-import './comp.css';
-import NewsDetails from './EventDetails';
+import { addFavoriteThings, removeFavoriteThings } from '../redux';
+import { setEventDetailsShow } from '../redux/EventDetails/EventDetailsAction';
+import '../styles/Style.css';
+import EventDetails from './EventDetails';
 
 function EventCard(props) {
-  const [currentNewsDetails, setCurrentNewsDetails] = useState([]);
+  const [currentEventDetails, setCurrentEventDetails] = useState([]);
   const [filterItems, setFilterItems] = useState([]);
 
-  function ShowNewsDetails(lId, lTitle, lDesc) {
-    props.setNewsDetailsShow();
-    const newsData = {
+  function ShowEventDetails(lId, lTitle, lDesc) {
+    props.setEventDetailsShow();
+    const EventData = {
       id: lId,
       title: lTitle,
       desc: lDesc,
     };
-    setCurrentNewsDetails(newsData);
+    setCurrentEventDetails(EventData);
   }
 
   const handleFavourite = (item) => {
@@ -46,11 +47,11 @@ function EventCard(props) {
 
   useEffect(() => {
     window.onpopstate = (e) => {
-      if (props.isShowNewsDetails) {
-        props.setNewsDetailsShow();
+      if (props.isShowEventDetails) {
+        props.setEventDetailsShow();
       }
       console.log('Back Press');
-      console.log(props.isShowNewsDetails);
+      console.log(props.isShowEventDetails);
     };
     if (props.category === 'favourite-events') {
       setFilterItems(props.favourite);
@@ -63,7 +64,7 @@ function EventCard(props) {
     <>
       {console.log('return')}
       {console.log(filterItems)}
-      {!props.isShowNewsDetails
+      {!props.isShowEventDetails
         ? (
           <div className="body-style">
             <div>
@@ -78,7 +79,7 @@ function EventCard(props) {
                           <Card.Body>
                             {props.category === 'home'
                               ? (
-                                <Card.Link style={{ color: 'black' }} as={NavLink} to={`/${item.id}`} push onClick={() => ShowNewsDetails(item.id, item.name, item)}>
+                                <Card.Link style={{ color: 'black' }} as={NavLink} to={`/${item.id}`} push onClick={() => ShowEventDetails(item.id, item.name, item)}>
                                   <Card.Img variant="top" src={item.images[0].url} />
                                   <Card.Text className="top-space">
                                     <h5>{item.name.substring(0, 25)}</h5>
@@ -86,7 +87,7 @@ function EventCard(props) {
                                 </Card.Link>
                               )
                               : (
-                                <Card.Link style={{ color: 'black' }} as={NavLink} to={`/${props.category}/${item.id}`} push onClick={() => ShowNewsDetails(item.id, item.name, item)}>
+                                <Card.Link style={{ color: 'black' }} as={NavLink} to={`/${props.category}/${item.id}`} push onClick={() => ShowEventDetails(item.id, item.name, item)}>
                                   <Card.Img variant="top" src={item.images[0].url} />
                                   <Card.Text className="top-space">
                                     <h5>{item.name.substring(0, 25)}</h5>
@@ -131,12 +132,12 @@ function EventCard(props) {
         : (
           <div>
             <Switch>
-              {/* <Route path = "/news/:id"><NewsDetails onShow={setIsShowNewsDetails} isShowBool ={isShowNewsDetails} newsData={currentNewsDetails}/></Route> */}
+              {/* <Route path = "/Event/:id"><EventDetails onShow={setIsShowEventDetails} isShowBool ={isShowEventDetails} EventData={currentEventDetails}/></Route> */}
               {(props.category === 'favourite-events')
-                ? (<Route path="/favourite-events/:id"><NewsDetails category="favourite-events" newsData={currentNewsDetails} /></Route>)
-                : (<Route path="/:id"><NewsDetails category="home" newsData={currentNewsDetails} /></Route>)}
+                ? (<Route path="/favourite-events/:id"><EventDetails category="favourite-events" EventData={currentEventDetails} /></Route>)
+                : (<Route path="/:id"><EventDetails category="home" EventData={currentEventDetails} /></Route>)}
 
-              {console.log('routing to newsDetails')}
+              {console.log('routing to EventDetails')}
             </Switch>
           </div>
         )}
@@ -145,12 +146,12 @@ function EventCard(props) {
 }
 
 const mapStateToProps = (state) => ({
-  isShowNewsDetails: state.newsDetails.isShowNewsDetails,
+  isShowEventDetails: state.eventDetails.isShowEventDetails,
   favourite: state.favourite,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setNewsDetailsShow: () => dispatch(setNewsDetailsShow()),
+  setEventDetailsShow: () => dispatch(setEventDetailsShow()),
   addFavoriteThings: (thing) => dispatch(addFavoriteThings(thing)),
   removeFavoriteThings: (thing) => dispatch(removeFavoriteThings(thing)),
 });

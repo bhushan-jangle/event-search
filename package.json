@@ -1,5 +1,5 @@
 {
-  "name": "quick-hunt",
+  "name": "event-search",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -28,7 +28,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint src .js"
+    "lint": "eslint src .js .jsx"
   },
   "eslintConfig": {
     "extends": [

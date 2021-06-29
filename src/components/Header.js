@@ -12,8 +12,7 @@ import React from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { setNewsDetailsShowAlways } from '../redux/NewsDetails/NewsDetailsAction';
-import './comp.css';
+import '../styles/Style.css';
 
 function Header(props) {
   return (
@@ -33,11 +32,11 @@ function Header(props) {
 }
 
 const mapStateToProps = (state) => ({
-  isShowNewsDetails: state.newsDetails.isShowNewsDetails,
+  isShowEventDetails: state.eventDetails.isShowEventDetails,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setNewsDetailsShowAlways: () => dispatch(setNewsDetailsShowAlways()),
+  setEventDetailsShowAlways: () => dispatch(setEventDetailsShowAlways()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

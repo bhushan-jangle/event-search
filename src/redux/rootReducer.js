@@ -2,11 +2,11 @@
 /* eslint-disable no-case-declarations */
 /* eslint-disable linebreak-style */
 import { combineReducers } from 'redux';
+import EventDetailsReducer from './EventDetails/EventDetailsReducer';
 import FavouriteReducer from './Favourite/FavouriteReducer';
-import NewsDetailsReducer from './NewsDetails/NewsDetailsReducer';
 
 const rootReducer = combineReducers({
-  newsDetails: NewsDetailsReducer,
+  eventDetails: EventDetailsReducer,
   favourite: FavouriteReducer,
 });
 

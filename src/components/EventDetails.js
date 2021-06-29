@@ -22,8 +22,8 @@ import {
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { setNewsDetailsShow } from '../redux/NewsDetails/NewsDetailsAction';
-import './comp.css';
+import { setEventDetailsShow } from '../redux/EventDetails/EventDetailsAction';
+import '../styles/Style.css';
 
 function EventDetails(props) {
   const handleClick = (url) => {
@@ -31,61 +31,61 @@ function EventDetails(props) {
   };
 
   return (
-    <div className="news-details">
-      {console.log('NewsDetails reached')}
+    <div className="Event-details">
+      {console.log('EventDetails reached')}
       {console.log(props)}
       <Row xs={1} md={1} className="g-4">
-        {/* {props.news.map((item) => ( */}
-        <Col key={props.newsData.id}>
+        {/* {props.Event.map((item) => ( */}
+        <Col key={props.EventData.id}>
           <div>
             <Card>
               <Card.Body>
                 {/* src="/img.png"/ */}
-                <Card.Img className="cardDetailImg" variant="top" src={props.newsData.desc.images[0].url} />
+                <Card.Img className="cardDetailImg" variant="top" src={props.EventData.desc.images[0].url} />
                 <Card.Text className="top-space cardTitle" />
                 <IconButton>
                   <AccessTimeRoundedIcon color="primary" fontSize="small" />
                 </IconButton>
-                <span>{props.newsData.desc.dates.start.localTime}</span>
+                <span>{props.EventData.desc.dates.start.localTime}</span>
 
                 <IconButton>
                   <EventNoteRoundedIcon color="primary" fontSize="small" />
                 </IconButton>
-                <span>{props.newsData.desc.dates.start.localDate}</span>
+                <span>{props.EventData.desc.dates.start.localDate}</span>
                 {props.category === 'home' ? (
-                  <Card.Link className="icon-goback" as={NavLink} to="/" onClick={props.setNewsDetailsShow}>
+                  <Card.Link className="icon-goback" as={NavLink} to="/" onClick={props.setEventDetailsShow}>
                     <IconButton>
                       <ArrowBackTwoToneIcon color="primary" fontSize="small" />
                     </IconButton>
                   </Card.Link>
                 )
                   : (
-                    <Card.Link className="icon-goback" as={NavLink} to={`/${props.category}`} onClick={props.setNewsDetailsShow}>
+                    <Card.Link className="icon-goback" as={NavLink} to={`/${props.category}`} onClick={props.setEventDetailsShow}>
                       <IconButton>
                         <ArrowBackTwoToneIcon color="primary" fontSize="small" />
                       </IconButton>
                     </Card.Link>
                   )}
                 <Card.Text>
-                  <Card.Title className="cardTitle">{props.newsData.title}</Card.Title>
+                  <Card.Title className="cardTitle">{props.EventData.title}</Card.Title>
                   <IconButton>
                     <LocationOnRoundedIcon color="primary" fontSize="small" />
                   </IconButton>
-                  <span>{props.newsData.desc._embedded.venues[0].name}</span>
-                  {/* <Card.Link as={NavLink} to={'/news'} onClick={()=>props.onShow(!props.isShowBool)}>Go Back...</Card.Link> */}
+                  <span>{props.EventData.desc._embedded.venues[0].name}</span>
+                  {/* <Card.Link as={NavLink} to={'/Event'} onClick={()=>props.onShow(!props.isShowBool)}>Go Back...</Card.Link> */}
                   <div className="saleCard">
                     <h5>Sale Details </h5>
                     <p>
                       Sale Starts :
-                      {props.newsData.desc.sales.public.startDateTime}
+                      {props.EventData.desc.sales.public.startDateTime}
                     </p>
                     <p>
                       Sale Ends :
-                      {props.newsData.desc.sales.public.endDateTime}
+                      {props.EventData.desc.sales.public.endDateTime}
                     </p>
                   </div>
                 </Card.Text>
-                <Button onClick={() => handleClick(props.newsData.desc.url)} variant="primary" size="lg" block>
+                <Button onClick={() => handleClick(props.EventData.desc.url)} variant="primary" size="lg" block>
                   Book
                 </Button>
               </Card.Body>
@@ -99,11 +99,11 @@ function EventDetails(props) {
 }
 
 const mapStateToProps = (state) => ({
-  isShowNewsDetails: state.newsDetails.isShowNewsDetails,
+  isShowEventDetails: state.eventDetails.isShowEventDetails
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setNewsDetailsShow: () => dispatch(setNewsDetailsShow()),
+  setEventDetailsShow: () => dispatch(setEventDetailsShow())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventDetails);

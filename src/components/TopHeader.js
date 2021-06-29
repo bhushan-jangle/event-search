@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TopHeader(props) {
+function TopHeader(props) {
   const classes = useStyles();
   const [input, setInput] = useState('');
   const [resultOpen, setResultOpen] = useState(false);
@@ -138,3 +138,5 @@ export default function TopHeader(props) {
     </>
   );
 }
+
+export default TopHeader;
