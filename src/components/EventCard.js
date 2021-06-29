@@ -22,6 +22,7 @@ import { addFavoriteThings, removeFavoriteThings } from '../redux';
 import { setEventDetailsShow } from '../redux/EventDetails/EventDetailsAction';
 import '../styles/Style.css';
 import EventDetails from './EventDetails';
+import EventNotFound from './EventNotFound';
 
 function EventCard(props) {
   const [currentEventDetails, setCurrentEventDetails] = useState([]);
@@ -69,7 +70,7 @@ function EventCard(props) {
           <div className="body-style">
             <div>
               <Row xs={1} md={4} className="g-4">
-
+                {!filterItems.length && <EventNotFound />}
                 {filterItems.map((item, key) => (
                   <div key={item.id}>
                     {/* <p>{item.name}</p> */}

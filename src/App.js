@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, BrowserRouter as Router } from 'react-router-dom';
 import Body from './components/Body';
-import Footer from './components/Footer';
 import Header from './components/Header';
 import TopHeader from './components/TopHeader';
 import { store } from './redux/store';
@@ -25,7 +24,6 @@ function App() {
           <TopHeader eventData={Events} />
           <Header />
           <Body eventData={Events} />
-          <Footer />
         </Router>
       </Provider>
     </>

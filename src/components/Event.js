@@ -5,10 +5,10 @@
 import React from 'react';
 import EventCard from './EventCard';
 
-function Event(props) {
+function Event({ eventData, category }) {
   return (
     <>
-      <EventCard eventData={props.eventData} category={props.category} />
+      <EventCard eventData={eventData} category={category} />
     </>
   );
 }
